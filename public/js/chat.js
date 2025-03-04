@@ -1,4 +1,6 @@
-const socket = io("https://chat-app-99s9.onrender.com");
+const socket = io("https://chat-app-99s9.onrender.com", {
+   transports: ["websocket", "polling"]
+});
 
 //?Elements
 const messageForm =
