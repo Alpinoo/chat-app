@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("https://chat-app-99s9.onrender.com");
 
 //?Elements
 const messageForm =
