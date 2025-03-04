@@ -24,7 +24,7 @@ const io = socketio(server, {
       methods: ["GET", "POST"]
    }
 });
-const publicDirectory = path.join(__dirname, 'public');
+const publicDirectory = path.join(__dirname, '../public');
 
 const port = process.env.PORT || 3000;
 
