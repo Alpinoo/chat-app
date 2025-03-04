@@ -3,6 +3,7 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const Filter = require('bad-words');
+const cors = require('cors');
 const {
    generateMessage,
    locationMessage,
@@ -17,16 +18,18 @@ const {
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+   cors: {
+      origin: "*", // Allow all origins; change this if needed
+      methods: ["GET", "POST"]
+   }
+});
+const publicDirectory = path.join(__dirname, 'public');
 
-const publicDirectory = path.join(
-   __dirname,
-   '../public'
-);
 const port = process.env.PORT || 3000;
 
 app.use(express.static(publicDirectory));
-
+app.use(cors());
 io.on('connection', (socket) => {
    console.log('Connection has been established');
 
